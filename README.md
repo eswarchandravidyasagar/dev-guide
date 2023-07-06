@@ -4,7 +4,7 @@
 Welcome to our Developer Guide. This guide serves as a reference for contributors to open-source projects created and maintained by Wellington-Dufferin-Guelph Public Health (WDGPH). With this guide we seek to support coding and project management practices that create reliable, and high-quality tools that can be developed collaboratively. This guide is not meant to be a strict set of rules, but rather a collection of best practices that we've found to work well for us in our day-to-day coding and project management.
 
 ### Contributions <!-- omit from toc -->
-This guide is a living document. The field of software development is always evolving, with new tools and practices continually emerging. This guide can only be kept current, useful, and forward-looking with your contributions. If you come across a tool, technique, or practice that you believe should be considered for our projects, we encourage you to open an issue or pull request to this document to suggest its addition.
+This guide can only be kept current, useful, and forward-looking with your contributions. If you come across a tool, technique, or practice that you believe should be considered for our projects, we encourage you to open an issue or pull request to this document to suggest its addition.
 
 ### Guide Contents <!-- omit from toc -->
 - [Git Version Control](#git-version-control)
@@ -82,7 +82,7 @@ In short, Git is the tool, and GitHub is the place where you store your projects
 - **Pull Request:** Proposal to merge changes from one branch into another on GitHub platform. A pull request (PR) allows for code review and discussion about the proposed changes.
 
 ### Git Installation and Setup
-This guide focuses on using Git, rather than its setup. Refer to [GitHub's documentation](https://docs.github.com/en/get-started/quickstart/set-up-git) if you do not yet have Git set up on your machine.
+This guide focuses on using Git, rather than its setup. Refer to [GitHub's documentation](https://docs.github.com/en/get-started/quickstart/set-up-git) if you do not yet have Git setup on your machine.
 
 ### Initializing a Repository
 To start using Git, you first need to initialize a Git repository in your project's directory. This creates a new subdirectory named `.git` that contains all of your necessary repository files — a Git repository skeleton. None of your project files are touched when you initialize the repository, but the directory becomes Git-aware and ready for version tracking.
@@ -161,18 +161,16 @@ git checkout main
 git merge your-branch-name
 ```
 
-A related concept is the pull request. While merging is a Git operation, a pull request is a functionality provided by hosting services like GitHub. Pull requests are a way to propose changes from a branch and request that someone review and merge your changes. 
+A related concept is the pull request (PR). While merging is a Git operation, PRs are a functionality provided by GitHub. PRs allow you to share your changes with others before they're merged into the main branch. This lets teams collaborate on the changes, discuss potential modifications, and approve the final version before it's integrated.
 
-Pull requests are not a part of the Git technology itself, but they are a core part of the collaborative workflow that Git enables. They are central to code review, as they allow you to share your changes with others before they're merged into the main branch. This lets teams collaborate on the changes, discuss potential modifications, and approve the final version before it's integrated.
+To create a PR, push your branch to the remote repository and then use the GitHub interface. You will be provided with an interface that lets you introduce your PR, and once submitted, will allow others to review, discuss, and merge or reject your changes. Draft PRs may be created for work in progress, which is especially useful for early feedback and direction. 
 
-To create a pull request, you would typically push your branch to the remote repository and then use the GitHub interface to open a new pull request. This provides an interface for reviewing the changes, having discussions, and ultimately merging the changes into the target branch.
-
-Thus, merging and pull requests together provide a powerful mechanism for collaborative development, enabling developers to work on separate tasks, propose changes, review code, and integrate features in a controlled and iterative manner.
+Note that if you are contributing to an external open source project, there may be specific requirements to having your PR considered.
 
 ### Public and Private Repositories
 In GitHub, you can create either public or private repositories. The primary difference between the two lies in who can see and interact with the repository. We recommend initially creating all repositories as private. This provides a safe space to build, test, and refine code. Once the code is considered ready for an initial release, it can undergo an internal peer review process. After passing the peer review, the repository may then be converted to a public repository if the project is suitable for public release.
 
-Even when a repository is private, all privacy and security precautions should still be strictly adhered to. The entire history of a repository, including contents of all past commits, become publicly accessible when a repository is made public. This also underscores the need for a thorough review of the entire git history during our peer review process. Refer to [Privacy](#privacy) and [Security](#security) for more specific guidance on these topics.
+Even when a repository is private, all privacy and security precautions should still be strictly adhered to. The entire history of a repository, including contents of all past commits, become publicly accessible when a repository is made public. This also underscores the need for a thorough review of the entire git history during our peer review process. Refer to [Privacy](#privacy) and [Security](#code-and-git-history) sections for more specific guidance on these topics.
 
 ### Other Git Concepts and GitHub Features
 
@@ -186,7 +184,7 @@ git stash
 ```
 
 #### Rebasing
-Rebasing 'replays' your branch's commits onto the tip of the specified branch, creating new commits in the process. Rebasing is particularly useful when preparing to make a pull request. It allows you to make your feature branch up to date with the latest code on the main branch. If the main branch has moved on since you branched off, rebasing can help by putting your changes on top of what everyone else has already done.
+Rebasing 'replays' your branch's commits onto the tip of the specified branch, creating new commits in the process. Rebasing is particularly useful when preparing to make a PR. It allows you to make your feature branch up to date with the latest code on the main branch. If the main branch has moved on since you branched off, rebasing can help by putting your changes on top of what everyone else has already done.
 
 In the terminal, you would typically switch to the branch you want to rebase and then use the `git rebase` command.
 
@@ -225,13 +223,13 @@ git tag v1.0.0
 Releases are a feature of GitHub that allows you to present significant versions of your code in a more polished way. When you create a release, GitHub takes a snapshot of the repository at the point of the tag you specify. You can also attach binary files (like compiled executables, minified scripts, documentation) to a release. Moreover, releases are accompanied by release notes that you can use to describe what's new in the specific version.
 
 #### Main Branch Protections
-To ensure stability of a projects, the main branch can be protected from direct commits. This means that developers cannot directly push their changes to the main branch. Instead, changes are introduced via pull requests. This setting can be enabled in the repository settings under the "Branches" section.
+To ensure stability of a projects, the main branch can be protected from direct commits. This means that developers cannot directly push their changes to the main branch. Instead, changes are introduced via PRs. This setting can be enabled in the repository settings under the "Branches" section.
 
-Before a pull request is merged into the main branch, you can also require a review by at least one other team member. This ensures a second set of eyes on the changes, making it less likely that bugs or other issues slip into the main codebase. This setting is also found in the repository settings, under the "Branches" section.
+Before a PR is merged into the main branch, you can also require a review by at least one other team member. This ensures a second set of eyes on the changes, making it less likely that bugs or other issues slip into the main codebase. This setting is also found in the repository settings, under the "Branches" section.
 
 #### GitHub Actions
 
-GitHub Actions is a powerful feature that automates certain tasks within your GitHub repository. Actions are event-driven, meaning they can be configured to execute or "trigger" when specific events occur in your repository, such as a push to a particular branch, the creation of a pull request, or the opening of an issue. One of the key strengths of GitHub Actions is its flexibility. It can be used to automate a wide range of tasks relevant to software development, and it supports multiple languages and platforms. They may be used for tasks such as building documentation, running tests and test coverage reports, or code style checks.
+GitHub Actions is a powerful feature that automates certain tasks within your GitHub repository. Actions are event-driven, meaning they can be configured to execute or "trigger" when specific events occur in your repository, such as a push to a particular branch, the creation of a PR, or the opening of an issue. One of the key strengths of GitHub Actions is its flexibility. It can be used to automate a wide range of tasks relevant to software development, and it supports multiple languages and platforms. They may be used for tasks such as building documentation, running tests and test coverage reports, or code style checks.
 
 ## Project Documentation
 
