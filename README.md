@@ -1,19 +1,22 @@
 # WDGPH Developer Guide <!-- omit from toc -->
 
-## Introduction
-Welcome to our Developer Guide. This guide serves as a reference for contributors to Wellington-Dufferin-Guelph Public Health's open-source projects. With this guide we seek to support coding and project management practices that create reliable, and high-quality tools that can be developed collaboratively. This guide is not a strict set of rules, but a collection of best practices that we've found to work well for us in our day-to-day coding and project management.
+## Introduction <!-- omit from toc -->
+Welcome to our Developer Guide. This guide serves as a reference for contributors to open-source projects created and maintained by Wellington-Dufferin-Guelph Public Health (WDGPH). With this guide we seek to support coding and project management practices that create reliable, and high-quality tools that can be developed collaboratively. This guide is not meant to be a strict set of rules, but rather a collection of best practices that we've found to work well for us in our day-to-day coding and project management.
 
-This guide is a living document. The field of software development is always evolving, with new tools and practices continually emerging. As such, **contributions and improvements to this guide are highly welcomed**. If you come across a tool, technique, or practice that you believe could benefit the team, we encourage you to open a pull request to this document to suggest its addition. Your perspective can help us keep this guide accessible, useful, and forward-looking.
+### Contributions <!-- omit from toc -->
+This guide is a living document. The field of software development is always evolving, with new tools and practices continually emerging. This guide can only be kept current, useful, and forward-looking with your contributions. If you come across a tool, technique, or practice that you believe should be considered for our projects, we encourage you to open an issue or pull request to this document to suggest its addition.
 
-- [Introduction](#introduction)
+### Guide Contents <!-- omit from toc -->
 - [Git Version Control](#git-version-control)
-  - [Understanding Git and GitHub](#understanding-git-and-github)
+  - [Distinction between Git and GitHub](#distinction-between-git-and-github)
   - [Core Concepts](#core-concepts)
+  - [Git Installation and Setup](#git-installation-and-setup)
   - [Initializing a Repository](#initializing-a-repository)
   - [Staging Changes](#staging-changes)
   - [Committing Changes](#committing-changes)
   - [Working with Branches](#working-with-branches)
   - [Merging and Pull Requests](#merging-and-pull-requests)
+  - [Public and Private Repositories](#public-and-private-repositories)
   - [Other Git Concepts and GitHub Features](#other-git-concepts-and-github-features)
     - [Stashing](#stashing)
     - [Rebasing](#rebasing)
@@ -56,9 +59,9 @@ This guide is a living document. The field of software development is always evo
 
 
 ## Git Version Control
-Git is a distributed version control system that provides mechanisms for multiple developers to work on a single project simultaneously without overwriting each other's changes. It maintains a complete history of a project's changes, facilitating the tracking of progress, the investigation of issues, and the potential to revert changes if necessary.
+Git is a distributed version control system that provides mechanisms for multiple developers to work on a single project simultaneously without overwriting each other's changes. It maintains a complete history of a project's changes, facilitating the tracking of progress, the investigation of issues, and the potential to revert changes if necessary. This guide aims to provide only a basic introduction to Git and Github to get you going with your first contributions, but many other resources for topics not covered like advanced functionality and operations can be found online. Guidance is provided for using the command line interface (CLI) as well as [VS Code](https://code.visualstudio.com/), which is a popular and extensible editor with user-friendly Git features. 
 
-### Understanding Git and GitHub
+### Distinction between Git and GitHub
 Git and GitHub are distinct but complementary tools used in code development. Git is a version control system that allows you to track changes, create branches, and more, all from your local development environment. It's a command-line tool that is installed and used on your local machine.
 
 On the other hand, GitHub is a web-based hosting service for Git repositories. It provides a graphical interface to interact with your Git repositories, and adds features such as access control, collaborative features (like pull requests and code reviews), issue tracking, and more. While you can use Git without GitHub, using them together provides a more robust, collaborative version control environment.
@@ -78,6 +81,9 @@ In short, Git is the tool, and GitHub is the place where you store your projects
 
 - **Pull Request:** Proposal to merge changes from one branch into another on GitHub platform. A pull request (PR) allows for code review and discussion about the proposed changes.
 
+### Git Installation and Setup
+This guide focuses on using Git, rather than its setup. Refer to [GitHub's documentation](https://docs.github.com/en/get-started/quickstart/set-up-git) if you do not yet have Git set up on your machine.
+
 ### Initializing a Repository
 To start using Git, you first need to initialize a Git repository in your project's directory. This creates a new subdirectory named `.git` that contains all of your necessary repository files — a Git repository skeleton. None of your project files are touched when you initialize the repository, but the directory becomes Git-aware and ready for version tracking.
 
@@ -89,12 +95,11 @@ git init
 
 When initializing a new repository, it's common and beneficial to include a few specific files:
 
-- **`README.md`:** This is often the first thing people will see when they access your repository. It should contain information about your project, how to use it, and any other relevant details. For smaller projects, an entire project's documentation might be contained in the README.
+- **`README.md`:** This should contain basic project information such as how to install it and basic use. For smaller projects, an entire project's documentation might be contained in the README. [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) format (`.md`) is recommended for this file as it will be rendered as repository landing page on GitHub.
 
 - **`LICENSE.md`:** This is crucial for open-source projects. The license dictates how others can use, modify, and distribute your project. 
 
 - **`.gitignore`:** This file tells Git which files or directories to ignore in your project. This is particularly useful for excluding files with sensitive information, logs, or machine-specific configuration files from your commits.
-
 
 ### Staging Changes
 In Git, the term "staging" refers to the process of preparing changes in your working directory for a commit. When you make changes to your files, Git recognizes that the files have been modified, but won't include these changes in a commit until you've "staged" them.
@@ -120,7 +125,13 @@ Commit messages are vital. They provide a log of changes made over time, which h
 
 The size of commits is a matter of preference, but it's generally best to keep commits relatively small and focused on a single task or feature. Large commits with many changes across many files can be difficult to understand and troubleshoot if issues arise. By keeping commits small and specific, it's easier to identify and manage changes across the project.
 
-Committing changes regularly and with good commit messages is a hallmark of effective version control and team collaboration.
+Once your commits are ready, you can share them with your team by pushing your commits to an upstream repository. The term "upstream" refers to the main repository that other developers will update from. It's typically the repository that you originally cloned or created your fork from. To push your commits to the upstream repository, use the git push command.
+
+```bash
+git push
+```
+
+In VS Code, you can perform the same operation by clicking the "..." menu in the Source Control view, then selecting "Push".
 
 ### Working with Branches
 Branches in Git separate different lines of development. You might create a new branch for adding a feature, fixing a bug, or even experimenting, while the main branch of your project (often called "main") remains stable and deployable.
@@ -158,10 +169,15 @@ To create a pull request, you would typically push your branch to the remote rep
 
 Thus, merging and pull requests together provide a powerful mechanism for collaborative development, enabling developers to work on separate tasks, propose changes, review code, and integrate features in a controlled and iterative manner.
 
+### Public and Private Repositories
+In GitHub, you can create either public or private repositories. The primary difference between the two lies in who can see and interact with the repository. We recommend initially creating all repositories as private. This provides a safe space to build, test, and refine code. Once the code is considered ready for an initial release, it can undergo an internal peer review process. After passing the peer review, the repository may then be converted to a public repository if the project is suitable for public release.
+
+Even when a repository is private, all privacy and security precautions should still be strictly adhered to. The entire history of a repository, including contents of all past commits, become publicly accessible when a repository is made public. This also underscores the need for a thorough review of the entire git history during our peer review process. Refer to [Privacy](#privacy) and [Security](#security) for more specific guidance on these topics.
+
 ### Other Git Concepts and GitHub Features
 
 #### Stashing
-`Stash` is a command that takes your modified tracked files, stages changes, and saves them on a stack of unfinished changes that you can reapply at any time. This is useful when you want to switch branches, but you don't want to commit your changes yet.
+`stash` is a command that takes your modified tracked files, stages changes, and saves them on a stack of unfinished changes that you can reapply at any time. This is useful when you want to switch branches, but you don't want to commit your changes yet.
 
 To stash changes:
 
