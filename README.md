@@ -7,6 +7,7 @@ Welcome to our Developer Guide. This guide serves as a reference for contributor
 This guide can only be kept current, useful, and forward-looking with your contributions. If you come across a tool, technique, or practice that you believe should be considered for our projects, we encourage you to open an issue or pull request to this document to suggest its addition.
 
 ### Guide Contents <!-- omit from toc -->
+- [Open Source](#open-source)
 - [Git Version Control](#git-version-control)
   - [Distinction between Git and GitHub](#distinction-between-git-and-github)
   - [Core Concepts](#core-concepts)
@@ -59,6 +60,24 @@ This guide can only be kept current, useful, and forward-looking with your contr
   - [Refactoring](#refactoring)
   - [End-of-life](#end-of-life)
 
+## Open Source
+
+**What is Open Source?**  
+Open source refers to code that is freely accessible for others to utilize, alter, and redistribute. Different [licenses](https://opensource.org/osd) exist which indicate exactly what forms of use, alteration and distribution are permissible, and should accompany any open-source project. 
+
+**Benefits of Open Source**  
+
+There are various reasons to consider making a project open source. Below is a sample of potential reasons:  
+
+*Transparency*: When working within a public sector organization, ensuring your work is transparent and open to the public is not only best practice, but a leading principle according to the [Ontario Digital and Data Directive](https://www.ontario.ca/page/ontarios-digital-and-data-directive-2021). Transparency is especially important during the [implementation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9682716/) of any artificial intelligence (AI) initiative.  
+
+*Project Quality*: Open source requires us to reflect on coding best practices, especially in relation to reproducibility, security, privacy, and documentation. The accessibility of open source projects can result in feedback from diverse users, leading to an overall higher quality project as well. 
+
+*Collaboration*: An open source approach can lead to collaborations that may otherwise not have formed. Collaborators can assist in delivering features, improving usability, improving documentation, identifying and correcting bugs, as well as partaking in regular maintenance tasks such as testing and updating dependencies.  
+
+*Efficiency*: Open source software development using version control is a particularly productive framework for collaboration. The accessibility of open-source projects can also reduce duplication of effort in the development of similar tools, workflows, or analyses across different organizations.  
+
+*Alignment*: Open-source approaches can support methodological alignment among collaborators and users of the project.  
 
 ## Git Version Control
 Git is a distributed version control system that enables multiple developers to collaborate on a single project simultaneously. Central to Git is a branching and merging workflow for the correction of bugs and creation of new features, as well as maintenance of a project's complete history of changes. This guide aims to provide only a basic introduction to Git and Github to get you going with your first contributions, but many other resources for more advanced topics not covered can be found online. Guidance is provided for using the command line interface (CLI) as well as [VS Code](https://code.visualstudio.com/), which is a popular and extensible editor with user-friendly Git features that can largely eliminate the need for using the CLI. 
