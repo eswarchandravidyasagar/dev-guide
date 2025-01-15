@@ -376,7 +376,30 @@ Managing dependencies is another crucial aspect of maintaining security:
 - **Minimal:** Limit your dependencies to what's necessary. Each additional dependency is another potential security vulnerability.
 - **Trustworthy:** Be cautious when adding new dependencies. Ensure they are from a reliable source, and have a good reputation within the community.
 - **Maintained:** A well-maintained and supported package is likely to have fewer security issues, and if any are found, they're likely to be fixed quickly.
-- **Up to date:** Regularly update your dependencies. Updates often include security fixes alongside new features and bug fixes.
+- **Up to date:** Regularly update your dependencies. Updates often include security fixes alongside new features and bug fixes. However, remember to test your project thoroughly after updating dependencies to ensure nothing breaks.
+
+#### Checking and Monitoring Package Health
+When including packages as project dependencies, it is important to check and monitor their health. Services like [snyk](https://snyk.io/) and [trivy](https://github.com/aquasecurity/trivy) can be used to scan for vulnerabilities and ensure the security of your dependencies.
+
+##### Snyk
+Snyk is a developer-first security platform that helps you find, fix, and monitor vulnerabilities in your dependencies. It integrates with your development workflow, providing real-time alerts and actionable advice to help you address security issues quickly.
+
+**Features and Benefits:**
+- **Vulnerability Scanning:** Snyk scans your code, dependencies, containers, and infrastructure as code for known vulnerabilities.
+- **Automated Fixes:** Snyk provides automated pull requests with fixes for vulnerabilities, making it easy to keep your dependencies secure.
+- **Continuous Monitoring:** Snyk continuously monitors your projects for new vulnerabilities and alerts you when new issues are discovered.
+- **Integration:** Snyk integrates with popular development tools and platforms, including GitHub, GitLab, Bitbucket, and more.
+
+##### Trivy
+Trivy is a comprehensive and easy-to-use vulnerability scanner for containers and other artifacts. It detects vulnerabilities in operating system packages, programming language libraries, and configuration files.
+
+**Features and Benefits:**
+- **Comprehensive Scanning:** Trivy scans for vulnerabilities in container images, file systems, and Git repositories.
+- **Fast and Accurate:** Trivy provides fast and accurate scanning results, helping you identify and address security issues quickly.
+- **Integration:** Trivy integrates with popular CI/CD pipelines, making it easy to incorporate security scanning into your development workflow.
+- **Open Source:** Trivy is an open-source tool, providing transparency and flexibility for developers.
+
+For R packages, refer to the [R and R Package Security](https://support.posit.co/hc/en-us/articles/360042593974-R-and-R-Package-Security) article for more information on best practices and tools for ensuring the security of R packages.
 
 ## Project Maintenance
 Maintaining a project is just as important as its initial development. This involves regular updates, bug fixes, dependency management, and ensuring the project stays relevant and useful over time.
@@ -439,5 +462,4 @@ Implementing AI in public health demands attention to specific challenges and be
 ### 7. Legal and Regulatory Compliance
 - **Regulatory Adherence**: Stay informed about and comply with relevant laws and regulations governing AI use in public health.
 - **Ethical Guidelines**: Follow established ethical guidelines, such as those from the World Health Organization, to ensure responsible AI deployment.
-
 
