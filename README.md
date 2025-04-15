@@ -59,6 +59,7 @@ This guide can only be kept current, useful, and forward-looking with your contr
   - [Documentation Updates](#documentation-updates)
   - [Refactoring](#refactoring)
   - [End-of-life](#end-of-life)
+- [Special Considerations for AI Projects and Deployment in Public Health](#special-considerations-for-ai-projects-and-deployment-in-public-health)
 
 ## Open Source
 
@@ -402,42 +403,66 @@ Over time, as more features are added and bugs are fixed, your codebase can beco
 ### End-of-life
 Finally, there might come a time when your project has served its purpose or has been replaced by better alternatives, and you decide to stop maintaining it. In such cases, it's good practice to clearly mark the project as no longer maintained, and if possible, direct users towards other alternatives. This helps set clear expectations for users and contributors.
 
-## Special Considerations for AI Projects and Deployment in Public Health
+# Special Considerations for AI Projects and Deployment in Public Health (Ontario – WDG)
 
-Implementing AI in public health demands attention to specific challenges and best practices:
+Implementing AI in public health in Ontario—especially for local units like Wellington-Dufferin-Guelph Public Health (WDGPH)—requires attention to specific challenges and best practices grounded in the provincial context.
 
-### 1. Data Privacy and Security
-- **Compliance**: Adhere to data protection regulations (e.g., PHIPA, HIPAA) and public health standards.
-- **Data Handling**: Prioritize the use of de-identified or aggregated data to safeguard individual privacy.
-- **Security Measures**: Implement robust encryption and access controls to protect sensitive health information.
+## 1. Data Privacy and Security
 
-### 2. Ethical AI Implementation
-- **Bias Mitigation**: Assess and address potential biases that could affect vulnerable populations, ensuring equitable health outcomes.
-- **Transparency**: Develop interpretable models to foster trust among health practitioners and the public.
-- **Alignment with Public Health Principles**: Ensure AI systems promote community well-being and adhere to ethical standards.
+- **Compliance**: Adhere to Ontario’s Personal Health Information Protection Act (PHIPA) and agency-specific data governance and privacy policies¹.
+- **Data Handling**: Prioritize de-identified or aggregated data to safeguard individual privacy and reduce re-identification risks.
+- **Security Measures**: Implement encryption, access control, and secure infrastructure to protect personal health information (PHI).
 
-### 3. Model Lifecycle Management
-- **Version Control**: Maintain systematic versioning of datasets, code, and models to track changes and updates.
-- **Validation**: Use diverse datasets representing target populations to validate models, ensuring accuracy and generalizability.
-- **Continuous Improvement**: Plan for regular updates to accommodate evolving health data and public health priorities.
+## 2. Ethical AI Implementation
 
-### 4. Infrastructure and Scalability
-- **Resource Assessment**: Evaluate infrastructure needs to support large datasets and complex models.
-- **Deployment Tools**: Utilize containerization (e.g., Docker) and orchestration frameworks (e.g., Kubernetes) to facilitate scalable deployment.
-- **Adaptability**: Design systems capable of deployment across various regions and adaptable to different public health contexts.
+- **Bias Mitigation**: Ensure machine learning models support equitable outcomes for all population groups² ³.
+- **Transparency**: Use interpretable models and document decision-making logic to build public and professional trust⁴.
+- **Alignment with Public Health Principles**: AI systems must promote health equity, align with public good objectives, and uphold community trust⁵ ⁶.
 
-### 5. Monitoring and Maintenance
-- **Performance Monitoring**: Continuously monitor models for performance degradation, especially in dynamic health environments.
-- **Anomaly Detection**: Establish real-time alert systems to identify and address unexpected trends or anomalies.
-- **Regular Audits**: Conduct periodic audits to ensure models remain aligned with public health objectives and ethical standards.
+## 3. Model Lifecycle Management
 
-### 6. Stakeholder Engagement and Collaboration
-- **Inclusive Development**: Engage public health experts, community representatives, and end-users throughout the development process.
-- **Communication**: Maintain transparency with stakeholders to explain AI decisions and build trust.
-- **Training and Education**: Provide training for public health practitioners to effectively utilize AI tools, enhancing their impact.
+- **Version Control**: Maintain systematic versioning of datasets, models, and code to track changes and ensure reproducibility.
+- **Validation**: Use diverse datasets representing target populations to validate models, ensuring accuracy and applicability within WDGPH’s catchment area⁷.
+- **Continuous Improvement**: Plan for regular model reviews and updates to reflect evolving data trends, health priorities, and operational needs.
 
-### 7. Legal and Regulatory Compliance
-- **Regulatory Adherence**: Stay informed about and comply with relevant laws and regulations governing AI use in public health.
-- **Ethical Guidelines**: Follow established ethical guidelines, such as those from the World Health Organization, to ensure responsible AI deployment.
+## 4. Infrastructure and Scalability
 
+- **Resource Assessment**: Recognize current limitations in staffing, expertise, and computational infrastructure within Ontario PHUs⁵.
+- **Deployment Tools**: Leverage tools like Docker and Kubernetes to enable scalable, replicable deployment where feasible⁸.
+- **Adaptability**: Build systems that can operate within Ontario’s varied public health settings, including smaller PHUs.
 
+## 5. Monitoring and Maintenance
+
+- **Performance Monitoring**: Continuously monitor model performance, especially in rapidly evolving contexts (e.g., outbreaks).
+- **Anomaly Detection**: Use automated systems to flag unexpected trends in surveillance or outcomes⁹.
+- **Regular Audits**: Conduct periodic model audits to assess ethical alignment, accuracy, and health equity impact.
+
+## 6. Stakeholder Engagement and Collaboration
+
+- **Inclusive Development**: Engage community voices, health practitioners, and policy leads throughout AI project lifecycles.
+- **Communication**: Clearly explain how AI-driven decisions are made and interpreted, especially when used for policy or intervention planning.
+- **Training and Education**: Support ongoing education for public health professionals and build organizational capacity to lead AI efforts⁵ ¹⁰.
+
+---
+
+## References
+
+1. Information and Privacy Commissioner of Ontario. Artificial intelligence in the public sector: building trust now and for the future [Internet]. Toronto (ON): IPC; 2024 [cited 2025 Apr 15]. Available from: https://www.ipc.on.ca/artificial-intelligence-in-the-public-sector-building-trust-now-and-for-the-future/
+
+2. Char DS, Shah NH, Magnus D. Implementing machine learning in health care—addressing ethical challenges. *N Engl J Med*. 2018;378(11):981–3.
+
+3. Raza S. Connecting fairness in machine learning with public health equity [Internet]. arXiv preprint; 2023 [cited 2025 Apr 15]. Available from: https://arxiv.org/abs/2304.04761
+
+4. Doshi-Velez F, Kim B. Towards a rigorous science of interpretable machine learning [Internet]. arXiv preprint; 2017 [cited 2025 Apr 15]. Available from: https://arxiv.org/abs/1702.08608
+
+5. Kueper JK, et al. Inaugural Artificial Intelligence for Public Health Practice (AI4PHP) Retreat: Ontario, Canada. 2023. (Internal report—not publicly available)
+
+6. World Health Organization. Ethics and governance of artificial intelligence for health [Internet]. Geneva: WHO; 2021 [cited 2025 Apr 15]. Available from: https://www.who.int/publications/i/item/9789240029200
+
+7. Rajkomar A, Dean J, Kohane I. Machine learning in medicine. *N Engl J Med*. 2019;380(14):1347–58.
+
+8. Burns B, Grant B, Oppenheimer D, Brewer E, Wilkes J. Borg, Omega, and Kubernetes. *Commun ACM*. 2016;59(5):50–7.
+
+9. Wiens J, Saria S, Sendak M, Ghassemi M, Liu VX, Doshi-Velez F, et al. Do no harm: a roadmap for responsible machine learning in health care. *Nat Med*. 2019;25(9):1337–40.
+
+10. Topol E. *Deep medicine: how artificial intelligence can make healthcare human again*. New York: Basic Books; 2019.
